@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Your Notes</h2>
+        <a href="/logout">Logout</a>
+
+        <form action="/dashboard" method="POST">
+            <textarea name="note" placeholder="Write your note..." required></textarea>
+            <button type="submit">Save Note</button>
+        </form>
+
+        <h3>Your Notes</h3>
+        <ul>
+            {% for note in notes %}
+                <li>{{ note[2] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
